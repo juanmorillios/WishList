@@ -10,10 +10,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // Componentes
 import { PendientesPage } from '../pages/pendientes/pendientes.components';
 import { TerminadosPage } from '../pages/terminados/terminados.components';
-
+import { AgregarPage } from '../pages/Agregar/agregar.components';
 // Servicios
 import { WishlistService } from './services/wishlist.services';
-import { AgregarPage } from '../pages/Agregar/agregar.components';
+
 @NgModule({
   declarations: [
     MyApp,
