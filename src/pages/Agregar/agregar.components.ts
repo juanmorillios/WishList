@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WishlistService } from '../../app/services/wishlist.services';
 import { List } from '../../app/models/list.model';
+import { NavParams } from 'ionic-angular';
 
 @Component({
     selector: 'page-agregar',
@@ -8,7 +9,12 @@ import { List } from '../../app/models/list.model';
 })
 export class AgregarPage{
 
-  constructor( public wishlistService: WishlistService ) {
+  lista: List;
+
+  constructor( public wishlistService: WishlistService, 
+               private navParams: NavParams){
+      const titulo = this.navParams.get('titulo');
+      this.lista = new List( titulo );
 
   }
 
