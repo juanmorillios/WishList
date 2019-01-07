@@ -18,6 +18,8 @@ export class AgregarPage{
 
       const titulo = this.navParams.get('titulo');
       this.lista = new List( titulo );
+
+      this.wishlistService.agregarLista( this.lista );
   }
    agregarItem() {
        if ( this.nombreItem.length === 0 ) {
@@ -26,13 +28,14 @@ export class AgregarPage{
     const nuevoItem = new ListItem(this.nombreItem);
     this.lista.items.push( nuevoItem );
     this.nombreItem = '';
+
    }
 
    actualizarTarea(item: ListItem) {
     item.completado = !item.completado;
    }
 
-   borrar(idx: number) {
-  this.lista.items.splice( idx, 1 );
+   borrar( idx: number ) {
+     this.lista.items.splice( idx, 1 );
    }
 }
