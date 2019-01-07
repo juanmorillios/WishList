@@ -1,6 +1,8 @@
 {
   "name": "WishList",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "6471986e"
 }

@@ -13,9 +13,9 @@ export class AgregarPage{
   lista: List;
   nombreItem: string = '';
 
-  constructor( public wishlistService: WishlistService, 
+  constructor( public wishlistService: WishlistService,
                private navParams: NavParams){
-                   
+
       const titulo = this.navParams.get('titulo');
       this.lista = new List( titulo );
   }
@@ -30,5 +30,9 @@ export class AgregarPage{
 
    actualizarTarea(item: ListItem) {
     item.completado = !item.completado;
+   }
+
+   borrar(idx: number) {
+  this.lista.items.splice( idx, 1 );
    }
 }
