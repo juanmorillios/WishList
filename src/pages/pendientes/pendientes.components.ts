@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WishlistService } from '../../app/services/wishlist.services';
-import { List } from '../../app/models/list.model';
+import { Lista } from '../../app/models/list.model';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { AgregarPage } from '../Agregar/agregar.components';
@@ -16,7 +16,7 @@ export class PendientesPage{
                private alertCtrl: AlertController) {
   }
 
-  listSelected ( list: List ) {
+  listSelected ( list: Lista ) {
     console.log(list);
   }
 
@@ -44,5 +44,4 @@ export class PendientesPage{
    });
    alerta.present();
    }
-
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WishlistService } from '../../app/services/wishlist.services';
-import { List } from '../../app/models/list.model';
+import { Lista } from '../../app/models/list.model';
 import { NavParams } from 'ionic-angular';
 import { ListItem } from '../../app/models/list-item.model';
 
@@ -10,16 +10,21 @@ import { ListItem } from '../../app/models/list-item.model';
 })
 export class AgregarPage{
 
-  lista: List;
+  lista: Lista;
   nombreItem: string = '';
 
   constructor( public wishlistService: WishlistService,
                private navParams: NavParams){
 
       const titulo = this.navParams.get('titulo');
-      this.lista = new List( titulo );
 
-      this.wishlistService.agregarLista( this.lista );
+      if ( this.navParams.get( 'lista' ) ) {
+        this.lista = this.navParams.get( 'lista' );
+      } else {
+        this.lista = new Lista( titulo );
+        this.wishlistService.agregarLista( this.lista );
+      }
+
   }
    agregarItem() {
        if ( this.nombreItem.length === 0 ) {
@@ -27,6 +32,7 @@ export class AgregarPage{
        }
     const nuevoItem = new ListItem(this.nombreItem);
     this.lista.items.push( nuevoItem );
+    this.wishlistService.guardarStorage();
     this.nombreItem = '';
 
    }
@@ -37,5 +43,7 @@ export class AgregarPage{
 
    borrar( idx: number ) {
      this.lista.items.splice( idx, 1 );
+     this.wishlistService.guardarStorage();
+
    }
 }

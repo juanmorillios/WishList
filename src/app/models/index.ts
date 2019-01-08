@@ -1,2 +1,2 @@
 import { ListItem } from './list-item.model';
-import { List } from './list.model';
+import { Lista } from './list.model';

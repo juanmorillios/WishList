@@ -1,12 +1,11 @@
-import { listeners } from 'cluster';
 import { Injectable } from '@angular/core';
-import { List } from '../models/list.model';
+import { Lista } from './../models/list.model';
 
 
 @Injectable()
 export class WishlistService {
 
-  lists: List[] = [];
+  listas: Lista[] = [];
 
   constructor() {
 
@@ -19,20 +18,20 @@ export class WishlistService {
 
   }
 
-  agregarLista( lista: List ) {
-    this.lists.push( lista );
-    this.guardarStorage();
+  agregarLista( lista: Lista ) {
+    this.listas.push( lista );
+    //this.guardarStorage();
   }
 
   guardarStorage() {
-    localStorage.setItem( 'data', JSON.stringify( this.lists ) );
+    localStorage.setItem('data', JSON.stringify(this.listas));
   }
 
   cargarStorage() {
-    if ( localStorage.getItem( 'data' ) ) {
-      this.lists = JSON.parse(localStorage.getItem('data'));
-    } else {
-      this.lists = [];
-    }
+    if( localStorage.getItem('data') ) {
+      this.listas = JSON.parse(localStorage.getItem('data'));
+  } else {
+      this.listas = [];
+  }
   }
 }
