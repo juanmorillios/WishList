@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="primary">
-        <ion-title>Completados</ion-title>
+        <ion-title>Terminados</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -8,13 +8,8 @@
 
     <img src="../../assets/imgs/completados.jpg">
 
-    <ion-list>
-        <button ion-item *ngFor="let lists of wishlistService.lists" (click)="listSelected(lists)">
-      {{ lists.titulo }}
-    </button>
-    </ion-list>
+    <app-listas [terminada]="true"></app-listas>
 
 
 
-    
 </ion-content>

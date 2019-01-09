@@ -1,20 +1,43 @@
 import { Injectable } from '@angular/core';
-import { List } from '../models/list.model';
-import { listeners } from 'cluster';
+import { Lista } from '../models/list.model';
+
 
 
 @Injectable()
 export class WishlistService {
 
-  lists: List[] = [];
+  listasApp: Lista[] = [];
 
   constructor() {
 
-    const list1 = new List('Tomorrow go to the cinema to see the movie of spiderman');
-    const list2 = new List('GToday, the day of kings, ask for pizza');
-    this.lists.push(list1, list2);
-    console.log(this.lists);
+    this.cargarStorage();
 
   }
 
+  agregarLista( lista: Lista ) {
+    this.listasApp.push( lista );
+    this.guardarStorage();
+  }
+
+  borrarLista( lista: Lista) {
+    this.listasApp = this.listasApp.filter( listaData => {
+      return listaData.id !== lista.id
+    });
+    this.guardarStorage();
+
+
+  }
+
+
+  guardarStorage() {
+    localStorage.setItem('data', JSON.stringify(this.listasApp));
+  }
+
+  cargarStorage() {
+    if( localStorage.getItem('data') ) {
+      this.listasApp = JSON.parse(localStorage.getItem('data'));
+  } else {
+      this.listasApp = [];
+  }
+  }
 }

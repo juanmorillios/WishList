@@ -13,6 +13,8 @@ import { TerminadosPage } from '../pages/terminados/terminados.components';
 import { AgregarPage } from '../pages/Agregar/agregar.components';
 // Servicios
 import { WishlistService } from './services/wishlist.services';
+import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completado';
+import { ListasComponent } from '../components/listas.components';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { WishlistService } from './services/wishlist.services';
     TabsPage,
     PendientesPage,
     TerminadosPage,
-    AgregarPage
+    AgregarPage,
+    FiltroCompletadoPipe,
+    ListasComponent
   ],
   imports: [
     BrowserModule,
