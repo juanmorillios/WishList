@@ -39,11 +39,23 @@ export class AgregarPage{
 
    actualizarTarea(item: ListItem) {
     item.completado = !item.completado;
+
+    const pendientes = this.lista.items.filter( itemData =>{
+      return !itemData.completado;
+    }).length;
+
+    if ( pendientes === 0 ) {
+      this.lista.terminada = true;
+      this.lista.terminadaEn = new Date();
+    } else {
+      this.lista.terminada = false;
+      this.lista.terminadaEn = null;
+    }
+    this.wishlistService.guardarStorage();
    }
 
    borrar( idx: number ) {
      this.lista.items.splice( idx, 1 );
      this.wishlistService.guardarStorage();
-
    }
 }

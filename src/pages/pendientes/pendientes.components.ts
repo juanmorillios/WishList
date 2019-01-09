@@ -16,10 +16,6 @@ export class PendientesPage{
                private alertCtrl: AlertController) {
   }
 
-  listSelected ( list: Lista ) {
-    console.log(list);
-  }
-
   agregarLista() {
    const alerta = this.alertCtrl.create({
      title: 'Nueva lista',
